@@ -44,4 +44,11 @@ Once the script is running, it will load any previously saved calibration from `
 - **`k`**: Move the active servo to its closed position.
 - **`q`**: Save the current calibration to `calibration.json` and exit the program. 
 
+**Note on errors:** If a servo with the selected ID is not found (for example if the external power isn't connected), the script will raise an opaque "Parsing error", like
+```
+    c.write_torque_enable(s_id, 1)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+RuntimeError: Parsing error
+```
+
 **Note on permissions:** If you encounter a permission error accessing `/dev/ttyACM0`, you may need to add your user to the `dialout` group (`sudo usermod -aG dialout $USER` and log out/in) or run the script with `sudo` (though using the `dialout` group is preferred).
